@@ -4,6 +4,8 @@
 
 ## ADDUSER
 
+Add a new user to RAKF
+
 **Syntax**:
 
 `RX ADDUSER 'USERID [PASSWORD(PASSWORD)] [DFLTGRP(USER)] [OPERATIONS|OPER] [SPECIAL] [NAME()|COMMENT()]'`
@@ -46,3 +48,99 @@ RX ADDUSER 'FTPD DFLTGRP(FTPD) PASSWORD(CHANGEME) COMMENT(FTP SERVICE ACCOUNT)'
 ```
 
 Defaults - `NOSPECIAL NOOPER`
+
+## ALTUSER
+
+Alter an existing RAKF user
+
+**Syntax**:
+
+`RX ALTUSER 'USERID [PASSWORD(PASSWORD)] [OPERATIONS|OPER|NOPERATIONS|NOOPER] [SPECIAL|NOSPECIAL] [NAME()|COMMENT()]'`
+
+Any argument in `[]` is optional but at least one should be used. Arguments with parentheses `()` expect the value to be in the parentheses. The user id must be the first argument, the rest can be in any order.
+
+**Defaults**:
+
+None
+
+**Examples**:
+
+1) To alter a user with the userid `MARKS` and change their password to `HYD3`:
+
+```
+RX ALTUSER 'MARKS PASSWORD(HYD3)'
+```
+
+
+To ALTER the user DA5ID and remove their RAKF admin status and privileged access:
+
+```
+RX ADDUSER 'DA5ID NOOPER NOSPECIAL'
+```
+
+To add alter the service account for FTPD giving it a stronger password and changing the comment:
+
+```
+RX ADDUSER 'FTPD PASSWORD(SECRET21) COMMENT(051521 Changed PW)'
+```
+
+## LISTUSER
+
+List RAKF user information
+
+**Syntax**:
+
+`RX LISTUSER '[USERID|*]`
+
+**Defaults**:
+
+Current user id
+
+**Examples**:
+
+List current user attributes:
+
+`RX LISTUSER`
+
+Output:
+
+```
+USER=DA5ID    GROUPS=ADMIN RAKFADM
+ATTRIBUTES=OPERATIONS SPECIAL
+COMMENTS=
+```
+
+List a different user attributes:
+
+`RX LISTUSER 'HMVS01'`
+
+Output:
+
+```
+USER=HMVS01   GROUPS=ADMIN RAKFADM
+ATTRIBUTES=OPERATIONS SPECIAL
+COMMENTS=
+```
+
+List all users:
+
+`RX LISTUSER '*'`
+
+Output:
+
+```
+USER=HMVS01
+GROUPS=ADMIN RAKFADM
+ATTRIBUTES=OPERATIONS SPECIAL
+COMMENTS=
+
+USER=HMVS02
+GROUPS=USER
+ATTRIBUTES=
+COMMENTS=
+
+USER=IBMUSER
+GROUPS=ADMIN RAKFADM
+ATTRIBUTES=OPERATIONS SPECIAL
+COMMENTS=
+```

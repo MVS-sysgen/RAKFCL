@@ -26,7 +26,7 @@ if pos("(",userid) > 0 then do
     say "RAKF01I First argument must be userid"
     exit
 end
-
+call check_length userid 'USERID' 7
 /* -------- Parse Arguments -------- */
 do while (length(args) > 0)
    parse var args t .
@@ -45,24 +45,34 @@ do while (length(args) > 0)
          OPER = 1
        when upper(current) = 'SPECIAL' then
          SPECIAL = 1
+       otherwise do
+         say 'RAKF01I Argument' current 'not recognized'
+         exit
+       end
      end
    else do
      parse var current option "(" selection ")"
      select
-       when (upper(option) = 'PASSWORD') then
+       when (upper(option) = 'PASSWORD') then do
          password = selection
+         call check_length PASSWORD 'PASSWORD' 8
+       end
        when (upper(option) = 'NAME') then
          NAME = selection
        when (upper(option) = 'COMMENT') then
          NAME = selection
-       when (upper(option) = 'DFLTGRP') then
+       when (upper(option) = 'DFLTGRP') then do
          DFLTGRP = selection
+         call check_length DFLTGRP 'DFLTGRP' 8
+       end
+       otherwise do
+         say 'RAKF01I Argument' current 'not recognized'
+         exit
+       end
      end
    end
 end
-call check_length userid 'USERID' 7
-call check_length PASSWORD 'PASSWORD' 8
-call check_length DFLTGRP 'DFLTGRP' 8
+
 /* ----- Open RAKF User file ----- */
 ADDRESS TSO "ALLOC FI(RAKF) DA('SYS1.SECURE.CNTL(USERS)') SHR REUSE"
 call check_rc rc
