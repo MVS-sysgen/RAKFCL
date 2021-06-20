@@ -144,3 +144,21 @@ GROUPS=ADMIN RAKFADM
 ATTRIBUTES=OPERATIONS SPECIAL
 COMMENTS=
 ```
+
+## DELUSER
+
+Delete RAKF user
+
+**Syntax**:
+
+`RX DELUSER 'USERID'`
+
+**Defaults**:
+
+None
+
+**Examples**:
+
+Delete the user `DA5ID`:
+
+`RX DELUSER 'DA5ID'`
