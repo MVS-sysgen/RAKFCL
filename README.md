@@ -1,6 +1,6 @@
 # RAKF Command Library
 
-**All these tools require BREXX higher than R2R4M0**
+**All these tools require BREXX higher than V2R4M0**
 
 ## ADDUSER
 
