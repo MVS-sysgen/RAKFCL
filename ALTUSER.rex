@@ -170,7 +170,7 @@ call rxsort
 /* ----- Update the RAKF database ----- */
 ADDRESS TSO "ALLOC FI(RAKF) DA('SYS1.SECURE.CNTL(USERS)') SHR REUSE"
 call check_rc rc
-ADDRESS TSO "EXECIO" sortin.0 "DISKW RAKF (STEM sortin. OPEN FINIS"
+ADDRESS TSO "EXECIO * DISKW RAKF (STEM sortin. OPEN FINIS"
 call check_rc rc
 ADDRESS TSO "FREE FI(RAKF)"
 /* ----- DONE ----- */
