@@ -86,7 +86,7 @@ EXIT
 check_rc:
   parse arg rcode
   if rcode > 0 then do
-    say 'RAKF04I Unsable to open RAKF user database'
+    say 'RAKF04I Unable to open RAKF user database'
     exit
   end
 return

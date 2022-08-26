@@ -44,7 +44,7 @@ do while (length(args) > 0)
      current = o||"("||s||")"
    end
 /* parse var args current args */
-   if pos("(",current) = 0 then
+   if pos("(",current) = 0 then do
      select
        when upper(current) = 'OPER' then
          OPER = 1
@@ -190,7 +190,7 @@ return
 check_rc:
   parse arg rcode
   if rcode > 0 then do
-    say 'RAKF04I Unsable to open RAKF user database'
+    say 'RAKF04I Unable to open RAKF user database'
     exit
   end
 return
