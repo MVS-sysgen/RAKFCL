@@ -6,7 +6,7 @@ username="IBMUSER"
 password="SYS1"
 
 cat << END
-//RAKFCLIN JOB (TSO),
+//RAKFCL   JOB (TSO),
 //             'Install RAKFCL',
 //             CLASS=A,
 //             MSGCLASS=A,
