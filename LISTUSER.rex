@@ -73,13 +73,13 @@ else do
   end
   /* catch the bottom user */
   say ''
-  say 'USER='||user
-  say "GROUPS="||grp
+  say 'USER= '||user
+  say "GROUPS= "||grp
   if OPER THEN attr = attr||"OPERATIONS "
   if rakfadm then attr = attr||"SPECIAL"
-  say "ATTRIBUTES="||attr
-  say "COMMENTS="||cmnts
-
+  say "ATTRIBUTES= "||attr
+  say "COMMENTS= "||cmnts
+  say ""
 end
 EXIT
 

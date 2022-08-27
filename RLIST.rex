@@ -80,9 +80,9 @@ return
 
 print_profile:
     parse arg prt_class prt_profile puacc
-    say "CLASS" prt_class
-    say "PROFILE" prt_profile
-    say "UACC" puacc
+    say "CLASS=  " prt_class
+    say "PROFILE=" prt_profile
+    say "UACC=   " puacc
     groups.0 = 0
     count = 0
     do c = 1 to sortin.0
