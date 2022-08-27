@@ -10,7 +10,9 @@ Add a new group to RAKF
 
 `RX ADDGROUP 'GROUPNAME" [OWNER(USERID)]`
 
-Any argument in `[]` is optional. Arguments with parentheses `()` expect the value to be in the parentheses. The groupname must be the first argument, the rest can be in any order.
+Any argument in `[]` is optional. Arguments with parentheses `()` expect
+the value to be in the parentheses. The groupname must be the first 
+argument, the rest can be in any order.
 
 **Defaults**:
 
@@ -20,8 +22,11 @@ Any argument in `[]` is optional. Arguments with parentheses `()` expect the val
 
 **Examples**:
 
-1) To add the group 'SYSTEM' and assign the owner to IBMUSER: `RX ADDGROUP 'SYSTEM OWNER(IBMUSER)`
-2) To add the group 'TESTIN' and assign the owner to your currently logged in user: `RX ADDGROUP 'TESTING'`
+To add the group 'SYSTEM' and assign the owner to IBMUSER: 
+`RX ADDGROUP 'SYSTEM OWNER(IBMUSER)`
+
+To add the group 'TESTIN' and assign the owner to your currently logged
+in user: `RX ADDGROUP 'TESTING'`
 
 ## ADDSD
 
@@ -31,9 +36,12 @@ Add a new dataset profile to RAKF
 
 `RX ADDSD 'PROFILE-NAME [UACC(READ)]'`
 
-Any argument in `[]` is optional. Arguments with parentheses `()` expect the value to be in the parentheses. The dataset profile must be the first argument, the rest can be in any order.
+Any argument in `[]` is optional. Arguments with parentheses `()` expect
+ the value to be in the parentheses. The dataset profile must be the
+ first argument, the rest can be in any order.
 
-Mutliple profile names can be given, just surround the profile-name with `()` and seperate them with a comma `,`
+Mutliple profile names can be given, just surround the profile-name with
+`()` and seperate them with a comma `,`
 
 
 **Defaults**:
@@ -45,8 +53,11 @@ Mutliple profile names can be given, just surround the profile-name with `()` an
 **Examples**:
 
 
-1) Add the dataset profile `SYSGEN.ISPF.*` with a UACC of READ: `RX ADDSD 'SYSGEN.ISPF.* UACC(READ)'`
-2) Add two dataset profiles, `SYS3.**` and `SYS4.MACLIB` with a UACC of NONE: `RX ADDSD '(SYS3.**,SYS4.MACLIB)'`
+Add the dataset profile `SYSGEN.ISPF.*` with a UACC of READ: 
+`RX ADDSD 'SYSGEN.ISPF.* UACC(READ)'`
+
+Add two dataset profiles, `SYS3.**` and `SYS4.MACLIB` with a UACC of
+NONE: `RX ADDSD '(SYS3.**,SYS4.MACLIB)'`
 
 ## ADDUSER
 
@@ -54,9 +65,14 @@ Add a new user to RAKF
 
 **Syntax**:
 
-`RX ADDUSER 'USERID [PASSWORD(PASSWORD)] [DFLTGRP(USER)] [OPERATIONS|OPER] [SPECIAL] [NAME()|COMMENT()]'`
+```
+RX ADDUSER 'USERID [PASSWORD(PASSWORD)] [DFLTGRP(USER)] 
+   [OPERATIONS|OPER] [SPECIAL] [NAME()|COMMENT()]'
+```
 
-Any argument in `[]` is optional. Arguments with parentheses `()` expect the value to be in the parentheses. The user id must be the first argument, the rest can be in any order.
+Any argument in `[]` is optional. Arguments with parentheses `()` expect
+the value to be in the parentheses. The user id must be the first 
+argument, the rest can be in any order.
 
 **Defaults**:
 
@@ -70,7 +86,7 @@ Any argument in `[]` is optional. Arguments with parentheses `()` expect the val
 
 **Examples**:
 
-1) To add a user with the userid `MARKS` with a password of `E4#J3KIL`:
+To add a user with the userid `MARKS` with a password of `E4#J3KIL`:
 
 ```
 RX ADDUSER 'MARKS PASSWORD(E4#J3KIL)'
@@ -78,7 +94,8 @@ RX ADDUSER 'MARKS PASSWORD(E4#J3KIL)'
 
 Defaults - `DFLTGRP(USER) NOSPECIAL NOOPER`
 
-To add the user DA5ID as a RAKF admin user with privileged access and add their name in the comment field:
+To add the user DA5ID as a RAKF admin user with privileged access and 
+add their name in the comment field:
 
 ```
 RX ADDUSER 'DA5ID OPER SPECIAL NAME(DAVID COPPERFIELD)'
@@ -87,10 +104,12 @@ RX ADDUSER 'DA5ID OPER SPECIAL NAME(DAVID COPPERFIELD)'
 Defaults - `DFLTGRP(USER) PASSWORD(PASSWORD) `
 
 
-To add a service account for FTPD in the group FTPD with a password of "CHANGEME":
+To add a service account for FTPD in the group FTPD with a password of
+"CHANGEME":
 
 ```
-RX ADDUSER 'FTPD DFLTGRP(FTPD) PASSWORD(CHANGEME) COMMENT(FTP SERVICE ACCOUNT)'
+RX ADDUSER 'FTPD DFLTGRP(FTPD) PASSWORD(CHANGEME) 
+COMMENT(FTP SERVICE ACCOUNT)'
 ```
 
 Defaults - `NOSPECIAL NOOPER`
@@ -101,9 +120,16 @@ Alter an existing RAKF user
 
 **Syntax**:
 
-`RX ALTUSER 'USERID [PASSWORD(PASSWORD)] [OPERATIONS|OPER|NOPERATIONS|NOOPER] [SPECIAL|NOSPECIAL] [NAME()|COMMENT()]'`
+```
+RX ALTUSER 'USERID [PASSWORD(PASSWORD)] 
+   [OPERATIONS|OPER|NOPERATIONS|NOOPER] [SPECIAL|NOSPECIAL] 
+   [NAME()|COMMENT()]'
+```
 
-Any argument in `[]` is optional but at least one should be used. Arguments with parentheses `()` expect the value to be in the parentheses. The user id must be the first argument, the rest can be in any order.
+Any argument in `[]` is optional but at least one should be used. 
+Arguments with parentheses `()` expect the value to be in the 
+parentheses. The user id must be the first argument, the rest can be in
+any order.
 
 **Defaults**:
 
@@ -111,20 +137,23 @@ None
 
 **Examples**:
 
-1) To alter a user with the userid `MARKS` and change their password to `HYD3`:
+To alter a user with the userid `MARKS` and change their password to 
+`HYD3`:
 
 ```
 RX ALTUSER 'MARKS PASSWORD(HYD3)'
 ```
 
 
-To ALTER the user DA5ID and remove their RAKF admin status and privileged access:
+To ALTER the user DA5ID and remove their RAKF admin status and 
+privileged access:
 
 ```
 RX ADDUSER 'DA5ID NOOPER NOSPECIAL'
 ```
 
-To add alter the service account for FTPD giving it a stronger password and changing the comment:
+To add alter the service account for FTPD giving it a stronger password
+and changing the comment:
 
 ```
 RX ADDUSER 'FTPD PASSWORD(SECRET21) COMMENT(051521 Changed PW)'
@@ -144,7 +173,8 @@ None
 
 **Examples**:
 
-1) Connect the user `PHIL` to the group `RAKFADM`: `RX CONNECT 'PHIL GROUP(RAKFADM)'`
+Connect the user `PHIL` to the group `RAKFADM`: 
+`RX CONNECT 'PHIL GROUP(RAKFADM)'`
 
 ## DELDSD
 
@@ -160,7 +190,8 @@ None
 
 **Examples**:
 
-1) Delete the RAKF dataset profile `SYS4.MACLIB`: `RX DELDSD 'SYS4.MACLIB'`
+Delete the RAKF dataset profile `SYS4.MACLIB`: 
+`RX DELDSD 'SYS4.MACLIB'`
 
 ## DELGROUP
 
@@ -294,7 +325,10 @@ Gives groups access to resources (classes and profiles)
 
 **Syntax**:
 
-`RX PERMIT PROFILE-NAME ID(GROUP[,GROUP2,...,n]) [CLASS(DATASET)] [ACCESS(READ)]`
+```
+RX PERMIT PROFILE-NAME ID(GROUP[,GROUP2,...,n]) [CLASS(DATASET)] 
+   [ACCESS(READ)]
+```
 
 **Defaults**:
 
@@ -305,8 +339,12 @@ Gives groups access to resources (classes and profiles)
 
 **Examples**:
 
-1) Permit the groups `ADMIN` and `USERS` to have read access to the BRXAUTH profile in the FACILITY class: `RX PERMIT 'BRXAUTH ID(ADMIN,USERS) CLASS(FACILITY) ACCESS(READ)`
-2) Give the group `USERS` alter access to the dataset `SYS4.MACLIB`: `RX PERMIT 'SYS4.MACLIB ID(USERS) ACCESS(ALTER)'`
+Permit the groups `ADMIN` and `USERS` to have read access to the 
+BRXAUTH profile in the FACILITY class: 
+`RX PERMIT 'BRXAUTH ID(ADMIN,USERS) CLASS(FACILITY) ACCESS(READ)`
+
+Give the group `USERS` alter access to the dataset `SYS4.MACLIB`: 
+`RX PERMIT 'SYS4.MACLIB ID(USERS) ACCESS(ALTER)'`
 
 ## RDEFINE
 
@@ -325,8 +363,11 @@ Define a new CLASS and a resource within that class
 
 **Examples**:
 
-1) Define the resource `SVC244` in the FACILITY class, UACC of NONE: `RX RDEFINE 'FACILITY SVC244'`
-2) Define the resource `NONQAUTH` in the FACILITY class with a UACC of READ: `RX RDEFINE 'FACILITY NONQAUTH UACC(READ)'`
+Define the resource `SVC244` in the FACILITY class, UACC of NONE: 
+`RX RDEFINE 'FACILITY SVC244'`
+
+Define the resource `NONQAUTH` in the FACILITY class with a UACC of 
+READ: `RX RDEFINE 'FACILITY NONQAUTH UACC(READ)'`
 
 ## RDELETE
 
@@ -342,7 +383,8 @@ None
 
 **Examples**:
 
-1) Delete the resource `SVC244` in the FACILITY class: `RX RDELETE 'FACILITY SVC244'`
+Delete the resource `SVC244` in the FACILITY class:
+ `RX RDELETE 'FACILITY SVC244'`
 
 ## REMOVE
 
@@ -358,7 +400,8 @@ None
 
 **Examples**:
 
-1) Remove the user `PHIL` from the group `USERS`: `RX REMOVE PHIL GROUP(USERS)`
+Remove the user `PHIL` from the group `USERS`:
+`RX REMOVE PHIL GROUP(USERS)`
 
 ## RLIST
 
@@ -374,8 +417,9 @@ If no class and no profile name is given all resources will be printed.
 
 **Examples**:
 
-1) List all RAKF profiles: `RX RLIST`
-2) List the details for the profiles `SVC244` in the FACILITY class: `RX RLIST 'FACILITY SVC244'`
+List all RAKF profiles: `RX RLIST`
+List the details for the profiles `SVC244` in the FACILITY class: 
+`RX RLIST 'FACILITY SVC244'`
 
 
 ## RVARY
@@ -392,7 +436,7 @@ None
 
 **Examples**:
 
-1) List the current status and location of the RAKF databases: `RX RVARY`
+1) List the current status/location of the RAKF databases: `RX RVARY`
 
 ## SETROPTS
 
