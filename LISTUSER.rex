@@ -66,6 +66,7 @@ else do
      cmnts=''
      OPER=0
      rakfadm=0
+     say ''
     end
     grp=grp||GROUP||" "
     cmnts=COMMENT
@@ -73,14 +74,13 @@ else do
     if OPS="Y" then oper=1
   end
   /* catch the bottom user */
-  say ''
   say 'USER= '||user
   say "GROUPS= "||grp
   if OPER THEN attr = attr||"OPERATIONS "
   if rakfadm then attr = attr||"SPECIAL"
   say "ATTRIBUTES= "||attr
   say "COMMENTS= "||cmnts
-  say ""
+  say ''
 end
 EXIT
 
