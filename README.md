@@ -1,6 +1,23 @@
 # RAKF Command Library
 
-**All these tools require BREXX higher than V2R4M0**
+**All these scripts require BREXX higher than V2R4M0**
+
+This repo contains a set of REXX scripts for MVS3.8J which allows for
+command line manipulation of the RAKF files. The syntax is explain for
+each command below.
+
+# Install
+
+If you're using MVS/CE you can install with `RX MVP INSTALL RAKFCL`
+
+If you wish to install manually do the following:
+
+1) Run the script `bash make_release.sh`
+2) Submit the resulting job stream to MVS: 
+`cat release.jcl|ncat -w1 -v localhost 3505`
+
+# RAKF Commands and usage
+
 
 ## ADDGROUP
 
