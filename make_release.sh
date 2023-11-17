@@ -32,7 +32,10 @@ for i in *.rex; do
     m=${i%.*}
     member=${m##*/}
     echo "./ ADD NAME=$member"
-    cat "$i"
+    # We need to convert all the rexx scripts to uppercase
+    # otherwise they abend on EXECIO
+    # SoF 11-16-23
+    cat "$i"| tr "a-z" "A-Z"
     echo ''
 done
 
